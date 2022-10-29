@@ -1,0 +1,26 @@
+package com.juaracoding.Pageobject.pages;
+
+import com.juaracoding.Pageobject.drivers.DriverSingleton;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Frames {
+    private WebDriver driver;
+
+    private Frames(){
+        this.driver = DriverSingleton.getDriver();
+        PageFactory.initElements(driver, this);
+    }
+    @FindBy(id = "frame1")
+    WebElement frameOne;
+
+    @FindBy(id = "sampleHeadng")
+    WebElement txtSampleHeading;
+
+    public void sampleFrame(){
+        driver.switchTo().frame(frameOne);
+        System.out.println(txtSampleHeading.getText());
+    }
+}
